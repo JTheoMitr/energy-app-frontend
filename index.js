@@ -29,8 +29,9 @@ function handleFormSubmit(event) {
 
     fetch(companiesURL, configObject)
     .then(response => response.json())
-    .then(data => {
-        console.log(data)
+    .then(newData => {
+        renderCompany(newData.data)
+        form.reset()
     })
 }
 
