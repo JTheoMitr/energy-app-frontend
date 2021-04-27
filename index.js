@@ -53,6 +53,7 @@ function renderCompanies(companyResponse) {
 function renderCompany(company) {
         const li = document.createElement("li")
         li.id = `company-${company.id}`
+        li.dataset.id = company.id
 
         li.innerHTML = `
 
@@ -68,10 +69,20 @@ function renderCompany(company) {
 
         `
 
-        const deleteBtn = li.querySelector('.delete')
-        deleteBtn.addEventListener('click', deleteCompany)
+        // const deleteBtn = li.querySelector('.delete')
+        // deleteBtn.addEventListener('click', deleteCompany)
+        li.addEventListener('click', handleCompanyClick)
 
         list.appendChild(li)
+}
+
+function handleCompanyClick(event) {
+    if (event.target.innerText === "Edit") {
+        console.log("Edit")
+    } else if (event.target.innerText === "Delete") {
+        deleteCompany(event)
+    }
+
 }
 
 function deleteCompany(event) {
