@@ -52,22 +52,45 @@ function renderCompanies(companyResponse) {
 
 function renderCompany(company) {
         const li = document.createElement("li")
+        li.id = `company-${company.id}`
 
         li.innerHTML = `
 
-            <div>
+            <div data-id="${company.id}">
             <strong>${company.attributes.name}</strong>
             <em>${company.attributes.location}:</em>
             <span>${company.attributes.description}</span>
             </div>
 
-            <button data-id="${company.id}">Edit</button>
-            <button data-id="${company.id}">Delete</button>
+            <button class="edit" data-id="${company.id}">Edit</button>
+            <button class="delete" data-id="${company.id}">Delete</button>
             <br></br>
 
         `
-    
+
+        const deleteBtn = li.querySelector('.delete')
+        deleteBtn.addEventListener('click', deleteCompany)
+
         list.appendChild(li)
+}
+
+function deleteCompany(event) {
+    const id = event.target.dataset.id
+    event.target.parentElement.remove()
+
+    const configObject = {
+        method: 'DELETE',
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        }
+    }
+
+    fetch(companiesURL + "/" + id, configObject)
+    .then(response => response.json())
+    .then(newData => {
+        alert(newData.message)
+    })
 }
 
 getCompanies()
