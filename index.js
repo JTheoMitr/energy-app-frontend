@@ -58,9 +58,9 @@ function renderCompany(company) {
         li.innerHTML = `
 
             <div data-id="${company.id}">
-            <strong>${company.attributes.name}</strong>
-            <em>${company.attributes.location}:</em>
-            <span>${company.attributes.description}</span>
+            <strong class="name">${company.attributes.name}</strong>
+            <em class="location">${company.attributes.location}</em>
+            <span class="description">${company.attributes.description}</span>
             </div>
 
             <button class="edit" data-id="${company.id}">Edit</button>
@@ -78,11 +78,34 @@ function renderCompany(company) {
 
 function handleCompanyClick(event) {
     if (event.target.innerText === "Edit") {
-        console.log("Edit")
+        renderEditForm(event.target)
+        event.target.innerText = "Save"
     } else if (event.target.innerText === "Delete") {
         deleteCompany(event)
+    } else if (event.target.innerText === "Save") {
+        patchElement(event.target.parentElement)
+        event.target.innerText = "Edit"
     }
 
+}
+
+function patchElement(liElement) {
+    //STOPPED HERE
+}
+
+function renderEditForm(editButton) {
+    const liElement = editButton.parentElement
+    const div = editButton.parentElement.querySelector('div')
+
+    const name = liElement.querySelector('.name').innerText
+    const location = liElement.querySelector('.location').innerText
+    const description = liElement.querySelector('.description').innerText
+    
+    div.innerHTML = `
+        <input type="text" name="name" class="update-name" value="${name}">
+        <input type="text" name="location" class="update-location" value="${location}">
+        <input type="text" name="description" class="update-description" value="${description}">
+    `
 }
 
 function deleteCompany(event) {
