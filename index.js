@@ -10,6 +10,7 @@ const locationInput = document.getElementById("company-location")
 
 form.addEventListener('submit', handleFormSubmit)
 
+
 function handleFormSubmit(event) {
     event.preventDefault()
     const formData = {
@@ -55,19 +56,7 @@ function renderCompany(company) {
         li.id = `company-${company.id}`
         li.dataset.id = company.id
 
-        li.innerHTML = `
-
-            <div data-id="${company.id}">
-            <strong class="name">${company.attributes.name}</strong><br></br>
-            <em class="location">${company.attributes.location}</em><br></br>
-            <span class="description">${company.attributes.description}</span><br></br>
-            </div>
-
-            <button class="edit" data-id="${company.id}">Edit</button>
-            <button class="delete" data-id="${company.id}">Delete</button>
-            <br></br>
-
-        `
+        renderLi(li, company)
 
         // const deleteBtn = li.querySelector('.delete')
         // deleteBtn.addEventListener('click', deleteCompany)
@@ -90,7 +79,48 @@ function handleCompanyClick(event) {
 }
 
 function patchElement(liElement) {
-    //STOPPED HERE
+
+    const name = liElement.querySelector('.update-name').value
+    const location = liElement.querySelector('.update-location').value
+    const description = liElement.querySelector('.update-description').value
+
+    const formData = {
+        name: name,
+        location: location,
+        description: description
+    }
+
+    const configObject = {
+        method: 'PATCH',
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify(formData)
+    }
+
+    const id = liElement.dataset.id
+
+    fetch(companiesURL + "/" + id, configObject)
+    .then(response => response.json())
+    .then(newData => {
+        renderLi(liElement, newData.data)
+    })
+}
+
+function renderLi(li, company) {
+    li.innerHTML = `
+
+            <div data-id="${company.id}">
+            <strong class="name">${company.attributes.name}</strong><br></br>
+            <em class="location">${company.attributes.location}</em><br></br>
+            <span class="description">${company.attributes.description}</span><br></br>
+            </div>
+
+            <button class="edit" data-id="${company.id}">Edit</button>
+            <button class="delete" data-id="${company.id}">Delete</button>
+            <br></br>
+        `
 }
 
 function renderEditForm(editButton) {
