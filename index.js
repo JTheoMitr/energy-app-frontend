@@ -58,9 +58,9 @@ function renderCompany(company) {
         li.innerHTML = `
 
             <div data-id="${company.id}">
-            <strong class="name">${company.attributes.name}</strong>
-            <em class="location">${company.attributes.location}</em>
-            <span class="description">${company.attributes.description}</span>
+            <strong class="name">${company.attributes.name}</strong><br></br>
+            <em class="location">${company.attributes.location}</em><br></br>
+            <span class="description">${company.attributes.description}</span><br></br>
             </div>
 
             <button class="edit" data-id="${company.id}">Edit</button>
