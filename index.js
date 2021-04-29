@@ -47,22 +47,9 @@ function getCompanies() {
 function renderCompanies(companyResponse) {
     const companies = companyResponse["data"]
     companies.forEach(company => {
+        new Company({id: company.id, ...company.attributes})
         renderCompany(company)
     })
-}
-
-function renderCompany(company) {
-        const li = document.createElement("li")
-        li.id = `company-${company.id}`
-        li.dataset.id = company.id
-
-        renderLi(li, company)
-
-        // const deleteBtn = li.querySelector('.delete')
-        // deleteBtn.addEventListener('click', deleteCompany)
-        li.addEventListener('click', handleCompanyClick)
-
-        list.appendChild(li)
 }
 
 function handleCompanyClick(event) {
@@ -106,21 +93,6 @@ function patchElement(liElement) {
     .then(newData => {
         renderLi(liElement, newData.data)
     })
-}
-
-function renderLi(li, company) {
-    li.innerHTML = `
-
-            <div data-id="${company.id}">
-            <strong class="name">${company.attributes.name}</strong><br></br>
-            <em class="location">${company.attributes.location}</em><br></br>
-            <span class="description">${company.attributes.description}</span><br></br>
-            </div>
-
-            <button class="edit" data-id="${company.id}">Edit</button>
-            <button class="delete" data-id="${company.id}">Delete</button>
-            <br></br>
-        `
 }
 
 function renderEditForm(editButton) {
