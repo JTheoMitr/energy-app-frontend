@@ -10,15 +10,39 @@ class Company {
         this.description = description
         this.energy_id = energy_id
 
+        this.element = document.createElement("li")
+        this.element.id = `company-${this.id}`
+        this.element.dataset.id = this.id
+
+        // debugger
+
         Company.all.push(this)
         
+    }
+
+    renderLi() {
+        this.element.innerHTML = `
+    
+                <div data-id="${this.id}">
+                <strong class="name">${this.name}</strong><br></br>
+                <em class="location">${this.location}</em><br></br>
+                <span class="description">${this.description}</span><br></br>
+                </div>
+    
+                <button class="edit" data-id="${this.id}">Edit</button>
+                <button class="delete" data-id="${this.id}">Delete</button>
+                <br></br>
+            `
+            return this.element
+    }
+
+    attachToDom() {
+        list.appendChild(this.renderLi())
     }
 }
 
 function renderCompany(company) {
-    const li = document.createElement("li")
-    li.id = `company-${company.id}`
-    li.dataset.id = company.id
+
 
     renderLi(li, company)
 
@@ -27,19 +51,4 @@ function renderCompany(company) {
     li.addEventListener('click', handleCompanyClick)
 
     list.appendChild(li)
-}
-
-function renderLi(li, company) {
-    li.innerHTML = `
-
-            <div data-id="${company.id}">
-            <strong class="name">${company.attributes.name}</strong><br></br>
-            <em class="location">${company.attributes.location}</em><br></br>
-            <span class="description">${company.attributes.description}</span><br></br>
-            </div>
-
-            <button class="edit" data-id="${company.id}">Edit</button>
-            <button class="delete" data-id="${company.id}">Delete</button>
-            <br></br>
-        `
 }

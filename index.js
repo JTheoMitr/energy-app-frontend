@@ -47,8 +47,9 @@ function getCompanies() {
 function renderCompanies(companyResponse) {
     const companies = companyResponse["data"]
     companies.forEach(company => {
-        new Company({id: company.id, ...company.attributes})
-        renderCompany(company)
+
+        const c = new Company({id: company.id, ...company.attributes})
+        c.attachToDom()
     })
 }
 
