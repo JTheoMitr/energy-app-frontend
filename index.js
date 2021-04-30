@@ -13,45 +13,10 @@ form.addEventListener('submit', handleFormSubmit)
 
 function handleFormSubmit(event) {
     event.preventDefault()
-    const formData = {
-        name: nameInput.value,
-        location: locationInput.value,
-        description: descriptionInput.value
-    }
-
-    const configObject = {
-        method: 'POST',
-        headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-        },
-        body: JSON.stringify(formData)
-    }
-
-    fetch(companiesURL, configObject)
-    .then(response => response.json())
-    .then(newData => {
-        renderCompany(newData.data)
-        form.reset()
-    })
+    CompanyApi.createCompany()
+    form.reset()
 }
 
-function getCompanies() {
-    
-    fetch("http://localhost:3000/companies")
-    .then(response => response.json())
-    .then(data => renderCompanies(data))
-
-}
-
-function renderCompanies(companyResponse) {
-    const companies = companyResponse["data"]
-    companies.forEach(company => {
-
-        const c = new Company({id: company.id, ...company.attributes})
-        c.attachToDom()
-    })
-}
 
 function patchElement(liElement) {
 
@@ -117,4 +82,4 @@ function deleteCompany(event) {
     })
 }
 
-getCompanies()
+CompanyApi.getCompanies()
