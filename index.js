@@ -53,19 +53,6 @@ function renderCompanies(companyResponse) {
     })
 }
 
-function handleCompanyClick(event) {
-    if (event.target.innerText === "Edit") {
-        renderEditForm(event.target)
-        event.target.innerText = "Save"
-    } else if (event.target.innerText === "Delete") {
-        deleteCompany(event)
-    } else if (event.target.innerText === "Save") {
-        patchElement(event.target.parentElement)
-        event.target.innerText = "Edit"
-    }
-
-}
-
 function patchElement(liElement) {
 
     const name = liElement.querySelector('.update-name').value

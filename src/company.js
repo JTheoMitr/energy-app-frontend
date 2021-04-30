@@ -14,10 +14,23 @@ class Company {
         this.element.id = `company-${this.id}`
         this.element.dataset.id = this.id
 
-        // debugger
+        this.element.addEventListener('click', this.handleCompanyClick)
 
         Company.all.push(this)
         
+    }
+
+    handleCompanyClick = (event) => {
+        if (event.target.innerText === "Edit") {
+            renderEditForm(event.target)
+            event.target.innerText = "Save"
+        } else if (event.target.innerText === "Delete") {
+            deleteCompany(event)
+        } else if (event.target.innerText === "Save") {
+            patchElement(event.target.parentElement)
+            event.target.innerText = "Edit"
+        }
+    
     }
 
     renderLi() {
@@ -39,16 +52,4 @@ class Company {
     attachToDom() {
         list.appendChild(this.renderLi())
     }
-}
-
-function renderCompany(company) {
-
-
-    renderLi(li, company)
-
-    // const deleteBtn = li.querySelector('.delete')
-    // deleteBtn.addEventListener('click', deleteCompany)
-    li.addEventListener('click', handleCompanyClick)
-
-    list.appendChild(li)
 }
