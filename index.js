@@ -18,35 +18,35 @@ function handleFormSubmit(event) {
 }
 
 
-function patchElement(liElement) {
+// function patchElement(liElement) {
 
-    const name = liElement.querySelector('.update-name').value
-    const location = liElement.querySelector('.update-location').value
-    const description = liElement.querySelector('.update-description').value
+//     const name = liElement.querySelector('.update-name').value
+//     const location = liElement.querySelector('.update-location').value
+//     const description = liElement.querySelector('.update-description').value
 
-    const formData = {
-        name: name,
-        location: location,
-        description: description
-    }
+//     const formData = {
+//         name: name,
+//         location: location,
+//         description: description
+//     }
 
-    const configObject = {
-        method: 'PATCH',
-        headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-        },
-        body: JSON.stringify(formData)
-    }
+//     const configObject = {
+//         method: 'PATCH',
+//         headers: {
+//             "Content-Type": "application/json",
+//             "Accept": "application/json"
+//         },
+//         body: JSON.stringify(formData)
+//     }
 
-    const id = liElement.dataset.id
+//     const id = liElement.dataset.id
 
-    fetch(companiesURL + "/" + id, configObject)
-    .then(response => response.json())
-    .then(newData => {
-        renderLi(liElement, newData.data)
-    })
-}
+//     fetch(companiesURL + "/" + id, configObject)
+//     .then(response => response.json())
+//     .then(newData => {
+//         renderLi(liElement, newData.data)
+//     })
+// }
 
 function renderEditForm(editButton) {
     const liElement = editButton.parentElement

@@ -42,4 +42,44 @@ class CompanyApi {
             c.attachToDom()
         })
     }
+
+    static sendPatch(company){
+        
+        let {name, location, description} = company
+        const companyInfo = {
+            name,
+            location,
+            description
+        }
+
+        const configObj = {
+            method: 'PATCH',
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(companyInfo)
+        }
+  
+        fetch(`${this.baseURL}/${company.id}`, configObj)
+        .then(r => r.json())
+        .then(json => {
+            // we are optomistically rendering here since we don't use the json response
+            company.renderLi()
+        })
+    }
+
+    static deleteCompany(id){
+        const configObj = {
+            method: 'DELETE',
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            }
+        }
+        
+        fetch(`${this.baseURL}/${id}`, configObj)
+            .then(r => r.json())
+            .then(json => alert(json.message))
+    }
 }
