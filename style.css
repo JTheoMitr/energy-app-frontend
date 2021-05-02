@@ -11,6 +11,13 @@
     font-size: large;
 }
 
+.activated {
+    background-color:rgb(40, 160, 230);
+    border-radius: 0px 5px 5px 0px;
+    border: 1px solid;
+    color: white;
+  }
+
 #company-form {
     display: inline-block;
     background-color: wheat;
@@ -42,3 +49,14 @@ ul {
     text-align: center;
     list-style-type: none;
 }
+
+button {
+    background-color: white;
+    border-radius: 0px 5px 5px 0px;
+    border: 1px solid rgb(40, 160, 230);
+    color: rgb(40, 160, 230);
+    padding: 10px 20px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+  }

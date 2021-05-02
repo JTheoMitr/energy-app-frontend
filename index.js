@@ -8,6 +8,8 @@ const nameInput = document.getElementById("company-name")
 const descriptionInput = document.getElementById("company-description")
 const locationInput = document.getElementById("company-location")
 
+const dropdown = document.getElementById('energy-dropdown')
+
 form.addEventListener('submit', handleFormSubmit)
 
 
@@ -83,3 +85,5 @@ function deleteCompany(event) {
 }
 
 CompanyApi.getCompanies()
+
+EnergyApi.getEnergies()

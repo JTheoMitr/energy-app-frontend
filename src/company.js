@@ -2,13 +2,13 @@ class Company {
 
     static all = []
 
-    constructor({id, name, location, description, energy_id}) {
+    constructor({id, name, location, description, energyid}) {
 
         this.id = id
         this.name = name
         this.location = location
         this.description = description
-        this.energy_id = energy_id
+        this.energyId = energyid
 
         this.element = document.createElement("li")
         this.element.id = `company-${this.id}`
@@ -108,5 +108,23 @@ class Company {
         this.description = this.element.querySelector(".edit-description").value
     
         CompanyApi.sendPatch(this) // moved fetch to itemApi for separation of concerns
+    }
+
+    static filterByEnergy(filteredEnergy){
+        
+        if (filteredEnergy){
+            for (const company of Company.all){
+                if(company.energyId === parseInt(filteredEnergy.id)){
+                    company.element.style.display = ""
+                } else {
+                    company.element.style.display = "none"
+                }
+            }
+        } else {
+            for (const company of Company.all){
+                company.element.style.display = ""
+            }
+        }
+       
     }
 }

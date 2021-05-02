@@ -8,6 +8,10 @@
 
     <body class="main">
         <h1>Pioneers in the Energy Field</h1>
+
+        <h2>Select Energy Type:</h2>
+        <div id="energy-container"></div>
+
         <h2>Here are all the Companies:</h2>
         <ul id="company-list">
         </ul>
@@ -21,11 +25,17 @@
            <label for="company-location">Location:</label>
            <input type="text" name="location" id="company-location"><br><br>
 
+           <label for="energy-dropdown">Energy Source:</label>
+           <select name="energy_id" id="energy-dropdown">
+           </select><br></br>
+
            <input type="submit" value="Create">
        </form>
 
        <script src="src/company.js" type="text/javascript"></script>
        <script src="src/companyApi.js" type="text/javascript"></script>
+       <script src="src/energy.js" type="text/javascript"></script>
+       <script src="src/energyApi.js" type="text/javascript"></script>
        <script src="index.js" type="text/javascript"></script>
 
     </body>

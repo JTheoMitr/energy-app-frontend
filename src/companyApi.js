@@ -22,7 +22,8 @@ class CompanyApi {
         const formData = {
             name: nameInput.value,
             location: locationInput.value,
-            description: descriptionInput.value
+            description: descriptionInput.value,
+            energy_id: dropdown.value 
         }
     
         const configObject = {
