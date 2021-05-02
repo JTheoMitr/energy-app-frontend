@@ -67,9 +67,9 @@ class Company {
                 <strong class="name">${this.name}</strong><br></br>
                 <em class="location">${this.location}</em><br></br>
                 <span class="description">${this.description}</span><br></br>
-                <a class="website" href=${this.website} target="_blank">Visit</a>
                 </div>
     
+                <a class="website" href=${this.website} target="_blank">VISIT</a>
                 <button class="edit" data-id="${this.id}">Edit</button>
                 <button class="delete" data-id="${this.id}">Delete</button>
                 <br></br>

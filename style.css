@@ -1,5 +1,6 @@
 .main {
-    background-color: aliceblue;
+    background-image: url("https://businesspulse.com/wp-content/uploads/2019/03/SOLAR-COLUMN_WEB.jpg");
+    background-size: cover;
     text-align: center;
 }
 
@@ -20,17 +21,19 @@
 
 #company-form {
     display: inline-block;
-    background-color: wheat;
+    background-color: whitesmoke;
+    opacity: 85%;
     border-style: solid;
     border-color: grey;
     border-radius: 10px;
     padding: 10px;
-    width: fit-content;
+    width: max-content;
 }
 
 #company-list {
     display: inline-block;
-    background-color: wheat;
+    background-color: whitesmoke;
+    opacity: 80%;
     border-style: solid;
     border-color: grey;
     border-radius: 10px;
@@ -56,8 +59,26 @@ button {
     border: 1px solid rgb(40, 160, 230);
     color: rgb(40, 160, 230);
     padding: 10px 20px;
-    margin: 5px;
+    margin: 10px;
     text-align: center;
     display: inline-block;
     font-size: 16px;
+  }
+
+  a {
+    background-color: white;
+    border-radius: 75px;
+    border: 1px solid rgb(40, 160, 230);
+    color: rgb(40, 160, 230);
+    padding: 10px 25px;
+    margin: 10px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    text-decoration: none;
+
+  }
+
+  h3 {
+      color: whitesmoke;
   }
