@@ -2,12 +2,13 @@ class Company {
 
     static all = []
 
-    constructor({id, name, location, description, energyid}) {
+    constructor({id, name, location, description, website, energyid}) {
 
         this.id = id
         this.name = name
         this.location = location
         this.description = description
+        this.website = website
         this.energyId = energyid
 
         this.element = document.createElement("li")
@@ -66,6 +67,7 @@ class Company {
                 <strong class="name">${this.name}</strong><br></br>
                 <em class="location">${this.location}</em><br></br>
                 <span class="description">${this.description}</span><br></br>
+                <a class="website" href=${this.website} target="_blank">Visit</a>
                 </div>
     
                 <button class="edit" data-id="${this.id}">Edit</button>
@@ -88,12 +90,14 @@ class Company {
         const name = li.querySelector('.name').innerText
         const location = li.querySelector('.location').innerText
         const description = li.querySelector('.description').innerText
+        const website = li.querySelector('.website').href
         
         // update the html and interpolate values:
         div.innerHTML = `
         <input type="text" name="name" class="edit-name" value="${name}">
         <input type="text" name="location" class="edit-location" value="${location}">
         <input type="text" name="description" class="edit-description" value="${description}">
+        <input type="text" name="website" class="edit-website" value="${website}">
         `
     }
 
@@ -106,6 +110,7 @@ class Company {
         this.name = this.element.querySelector(".edit-name").value
         this.location = this.element.querySelector(".edit-location").value
         this.description = this.element.querySelector(".edit-description").value
+        this.website = this.element.querySelector(".edit-website").value
     
         CompanyApi.sendPatch(this) // moved fetch to itemApi for separation of concerns
     }

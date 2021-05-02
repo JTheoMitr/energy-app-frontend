@@ -7,6 +7,7 @@ const form = document.getElementById("company-form")
 const nameInput = document.getElementById("company-name")
 const descriptionInput = document.getElementById("company-description")
 const locationInput = document.getElementById("company-location")
+const websiteInput = document.getElementById("company-website")
 
 const dropdown = document.getElementById('energy-dropdown')
 
@@ -57,11 +58,13 @@ function renderEditForm(editButton) {
     const name = liElement.querySelector('.name').innerText
     const location = liElement.querySelector('.location').innerText
     const description = liElement.querySelector('.description').innerText
+    const website = liElement.querySelector('.website').href
     
     div.innerHTML = `
         <input type="text" name="name" class="update-name" value="${name}">
         <input type="text" name="location" class="update-location" value="${location}">
         <input type="text" name="description" class="update-description" value="${description}">
+        <input type="text" name="website" class="update-website" value="${website}">
     `
 }
 

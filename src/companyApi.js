@@ -23,6 +23,7 @@ class CompanyApi {
             name: nameInput.value,
             location: locationInput.value,
             description: descriptionInput.value,
+            website: websiteInput.value,
             energy_id: dropdown.value 
         }
     
@@ -46,11 +47,12 @@ class CompanyApi {
 
     static sendPatch(company){
         
-        let {name, location, description} = company
+        let {name, location, description, website} = company
         const companyInfo = {
             name,
             location,
-            description
+            description,
+            website
         }
 
         const configObj = {
