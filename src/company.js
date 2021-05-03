@@ -21,39 +21,19 @@ class Company {
         
     }
 
-    // handleCompanyClick = (event) => {
-    //     if (event.target.innerText === "Edit") {
-    //         renderEditForm(event.target)
-    //         event.target.innerText = "Save"
-    //     } else if (event.target.innerText === "Delete") {
-    //         deleteCompany(event)
-    //     } else if (event.target.innerText === "Save") {
-    //         patchElement(event.target.parentElement)
-    //         event.target.innerText = "Edit"
-    //     }
-    
-    // }
-
     handleCompanyClick = (e) => {
         if (e.target.innerText === "Edit"){
-            // OLD 
-            // renderEditForm(e.target)
 
-            // NEW OO
             this.createEditFields(e.target)
 
             e.target.innerText = "Save"
-        }else if(e.target.innerText === "Delete"){
-            // OLD
-            // deleteItem(e) 
-
-            // NEW OO
-            this.deleteCompany(e)
-        } else if(e.target.innerText === "Save"){ 
-           // OLD
-            // patchElement(e.target.parentElement)
             
-            // NEW OO
+        }else if(e.target.innerText === "Delete"){
+        
+            this.deleteCompany(e)
+
+        } else if(e.target.innerText === "Save"){ 
+
             this.saveUpdatedCompany()
 
             e.target.innerText = "Edit"
