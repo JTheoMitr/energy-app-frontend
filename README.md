@@ -20,7 +20,9 @@ once the server is running, come back to this repo, and enter the following in y
 
 open index.html
 
-Remember to exit the rails server in your terminal (ctrl + c) before closing out your development environment!
+From there you will use the page that opens in your default browser.
+
+Once finished - remember to exit the rails server in your terminal (ctrl + c) before closing out your development environment!
 
 Contribution
 ---------
