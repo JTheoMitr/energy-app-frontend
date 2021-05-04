@@ -34,17 +34,29 @@ class Energy {
     }
 
     setActiveEnergy = (event) => {
-        let filteredEnergy
+    
+    
         Energy.all.forEach(n => {
     
-            if(n.element === this.element && !this.active){
+            if(n.element === this.element && !!this.active) {
+
+                n.element.classList.remove('activated')
+                n.active = false
+                for (let i = 0; i < filteredEnergy.length; i++ ) {
+                    if ( filteredEnergy[i] == n.id ) {
+                        filteredEnergy.splice(i, 1)
+                    }
+                }
+
+            
+            } else if (n.element === this.element && !this.active){
                 
                 n.element.classList.add('activated')
                 n.active = true
-                filteredEnergy = n
-            } else {
-                n.element.classList.remove('activated')
-                n.active = false
+                filteredEnergy.push(n.id)
+        
+
+
             }
             
         }) 

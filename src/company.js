@@ -27,7 +27,7 @@ class Company {
             this.createEditFields(e.target)
 
             e.target.innerText = "Save"
-            
+
         }else if(e.target.innerText === "Delete"){
         
             this.deleteCompany(e)
@@ -97,17 +97,19 @@ class Company {
 
     static filterByEnergy(filteredEnergy){
         
-        if (filteredEnergy){
-            for (const company of Company.all){
-                if(company.energyId === parseInt(filteredEnergy.id)){
-                    company.element.style.display = ""
-                } else {
-                    company.element.style.display = "none"
-                }
-            }
-        } else {
+        if (filteredEnergy.length == 0) {
             for (const company of Company.all){
                 company.element.style.display = ""
+            }
+        } else if (filteredEnergy){
+            
+            for (const company of Company.all){
+                
+                if(filteredEnergy.includes(company.energyId.toString())){
+                    company.element.style.display = ""
+                } else if (!filteredEnergy.includes(company.energyId.toString())){
+                    company.element.style.display = "none"
+                }
             }
         }
        

@@ -10,6 +10,7 @@ const locationInput = document.getElementById("company-location")
 const websiteInput = document.getElementById("company-website")
 const dropdown = document.getElementById('energy-dropdown')
 
+let filteredEnergy = []
 
 
 form.addEventListener('submit', handleFormSubmit)
