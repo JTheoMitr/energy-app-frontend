@@ -15,6 +15,7 @@ class CompanyApi {
                 c.attachToDom()
              })
         })
+
     
     }
 
@@ -85,4 +86,6 @@ class CompanyApi {
             .then(r => r.json())
             .then(json => alert(json.message))
     }
+
+    
 }
