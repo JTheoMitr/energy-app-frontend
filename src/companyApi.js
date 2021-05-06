@@ -8,7 +8,7 @@ class CompanyApi {
         .then(response => response.json())
         .then(newData => {
             
-            const companies = newData["data"]
+            const companies = newData["data"] //data is the key that corresponds to the group of objects we need
             companies.forEach(company => {
 
                 const c = new Company({id: company.id, ...company.attributes})
@@ -46,7 +46,7 @@ class CompanyApi {
         })
     }
 
-    static sendPatch(company){
+    static patchCompany(company){
         
         let {name, location, description, website} = company
         const companyInfo = {

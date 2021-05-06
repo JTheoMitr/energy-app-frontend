@@ -22,39 +22,21 @@ function handleFormSubmit(event) {
     form.reset()
 }
 
-function deleteCompany(event) {
-    const id = event.target.dataset.id
-    event.target.parentElement.remove()
-
-    const configObject = {
-        method: 'DELETE',
-        headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-        }
-    }
-
-    fetch(companiesURL + "/" + id, configObject)
-    .then(response => response.json())
-    .then(newData => {
-        alert(newData.message)
-    })
-}
 
 CompanyApi.getCompanies()
 
 EnergyApi.getEnergies()
 
-
+// Filter Practice
 document.getElementById("myBtn").addEventListener("click", function() {
     console.log(Company.all.sort((a, b) => {
-        let fa = a.name.toLowerCase(),
-            fb = b.name.toLowerCase();
+        let nameA = a.name.toLowerCase(),
+            nameB = b.name.toLowerCase();
     
-        if (fa < fb) {
+        if (nameA < nameB) {
             return -1;
         }
-        if (fa > fb) {
+        if (nameA > nameB) {
             return 1;
         }
         return 0;

@@ -1,7 +1,7 @@
 class Company {
 
     static all = []
-
+    // constructor is similar to building a ruby object (initialize)
     constructor({id, name, location, description, website, energyid}) {
 
         this.id = id
@@ -15,13 +15,13 @@ class Company {
         this.element.id = `company-${this.id}`
         this.element.dataset.id = this.id
 
-        this.element.addEventListener('click', this.handleCompanyClick)
+        this.element.addEventListener('click', this.clickEditSaveDelete)
 
         Company.all.push(this)
         
     }
 
-    handleCompanyClick = (e) => {
+    clickEditSaveDelete = (e) => {
         if (e.target.innerText === "Edit"){
 
             this.createEditFields(e.target)
@@ -41,6 +41,7 @@ class Company {
     }
 
     renderLi() {
+        // building each individual Li element with dynamic data from each company
         this.element.innerHTML = `
     
                 <div data-id="${this.id}">
@@ -92,7 +93,7 @@ class Company {
         this.description = this.element.querySelector(".edit-description").value
         this.website = this.element.querySelector(".edit-website").value
     
-        CompanyApi.sendPatch(this) // moved fetch to itemApi for separation of concerns
+        CompanyApi.patchCompany(this) // moved fetch to itemApi for separation of concerns
     }
 
     static filterByEnergy(filteredEnergy){
