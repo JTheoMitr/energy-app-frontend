@@ -14,7 +14,7 @@
 
 .activated {
     background-color:rgb(40, 160, 230);
-    border-radius: 0px 5px 5px 0px;
+    border-radius: 75px;
     border: 1px solid;
     color: white;
   }

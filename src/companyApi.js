@@ -4,11 +4,11 @@ class CompanyApi {
 
     static getCompanies() {
     
-        fetch(this.baseURL) // this.baseURL instead of just baseURL because it is a static variable in the CompanyApi class
+        fetch(this.baseURL) 
         .then(response => response.json())
         .then(newData => {
             
-            const companies = newData["data"] //data is the key that corresponds to the group of objects we need
+            const companies = newData["data"] 
             companies.forEach(company => {
 
                 const c = new Company({id: company.id, ...company.attributes})
@@ -68,7 +68,7 @@ class CompanyApi {
         fetch(`${this.baseURL}/${company.id}`, configObj)
         .then(r => r.json())
         .then(json => {
-            // we are optomistically rendering here since we don't use the json response
+            
             company.renderLi()
         })
     }

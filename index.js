@@ -29,24 +29,6 @@ EnergyApi.getEnergies()
 
 // Filter Practice
 document.getElementById("myBtn").addEventListener("click", function() {
-    console.log(Company.all.sort((a, b) => {
-        let nameA = a.name.toLowerCase(),
-            nameB = b.name.toLowerCase();
     
-        if (nameA < nameB) {
-            return -1;
-        }
-        if (nameA > nameB) {
-            return 1;
-        }
-        return 0;
-    }))
-    list.innerText = ""
-
-    const companies = Company.all
-
-    companies.forEach(company => {
-    company.attachToDom()
-        })
   })
 

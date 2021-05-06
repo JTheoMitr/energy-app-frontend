@@ -1,7 +1,7 @@
 class Company {
 
     static all = []
-    // constructor is similar to building a ruby object (initialize)
+    
     constructor({id, name, location, description, website, energyid}) {
 
         this.id = id
@@ -83,8 +83,8 @@ class Company {
     }
 
     deleteCompany = (e) => {
-        this.element.remove() // remove it before the fetch request 
-        CompanyApi.deleteCompany(this.id) // moved fetch to itemApi for separation of concerns
+        this.element.remove() 
+        CompanyApi.deleteCompany(this.id) 
     }
 
     saveUpdatedCompany = () => {
