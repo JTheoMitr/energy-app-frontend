@@ -41,7 +41,7 @@ class Company {
     }
 
     renderLi() {
-        // building each individual Li element with dynamic data from each company
+        
         this.element.innerHTML = `
     
                 <div data-id="${this.id}">
@@ -114,6 +114,19 @@ class Company {
             }
         }
        
+    }
+
+    static companiesFromAustin() {
+        const austinCompanies = Company.all.filter(company => {
+            return company.location == "Austin, TX"})
+
+            list.innerHTML = ""
+               
+            austinCompanies.forEach(company => {
+                company.attachToDom()
+                })
+
+
     }
 
 

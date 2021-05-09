@@ -14,4 +14,30 @@ class EnergyApi {
         })
     }
 
+    static createEnergy() {
+        const formData = {
+            name: energyName.value
+        }
+
+        const configObject = {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(formData)
+        }
+
+        fetch(this.baseURL, configObject)
+        .then(response => response.json())
+        .then(newData => {
+            const energy = newData.data
+            const e = new Energy({id: energy.id, ...energy.attributes})
+            e.addToDom()
+            e.addToDropDown()
+        })
+    }
+
 }
+
+// create and delete functionality, add both for energies - make the dom rendering portion different than the other create function etc
