@@ -38,6 +38,20 @@ class EnergyApi {
         })
     }
 
+    static deleteEnergy(id) {
+        const configObj = {
+            method: 'DELETE',
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            }
+        }
+
+        fetch(`${this.baseURL}/${id}`, configObj)
+            .then(r => r.json())
+            .then(json => alert(json.message))
+    }
+
 }
 
 // create and delete functionality, add both for energies - make the dom rendering portion different than the other create function etc

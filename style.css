@@ -19,6 +19,11 @@
     color: white;
   }
 
+  .energyDelete {
+      color: red;
+      background-color: wheat;
+  }
+
 #company-form {
     display: inline-block;
     background-color: whitesmoke;

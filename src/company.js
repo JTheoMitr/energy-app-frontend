@@ -116,15 +116,26 @@ class Company {
        
     }
 
-    static companiesFromAustin() {
-        const austinCompanies = Company.all.filter(company => {
-            return company.location == "Austin, TX"})
-
-            list.innerHTML = ""
-               
-            austinCompanies.forEach(company => {
-                company.attachToDom()
-                })
+    static companiesAbc() {
+        Company.all.sort((a, b) => {
+            let nameA = a.name.toLowerCase(),
+                nameB = b.name.toLowerCase();
+        
+            if (nameA < nameB) {
+                return -1;
+            }
+            if (nameA > nameB) {
+                return 1;
+            }
+            return 0;
+        })
+        list.innerText = ""
+    
+        const companies = Company.all
+    
+        companies.forEach(company => {
+        company.attachToDom()
+            })
 
 
     }

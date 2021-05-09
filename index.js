@@ -39,6 +39,6 @@ EnergyApi.getEnergies()
 
 // Filter Practice
 
-document.getElementById("austinBtn").addEventListener("click", Company.companiesFromAustin)
+document.getElementById("abcBtn").addEventListener("click", Company.companiesAbc)
 
 

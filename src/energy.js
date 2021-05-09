@@ -10,6 +10,8 @@ class Energy {
         this.active = false
 
         this.element = document.createElement('button')
+        this.deleteBtn = document.createElement('button')
+        this.deleteBtn.className = "energyDelete"
 
         Energy.all.push(this)
     }
@@ -24,13 +26,27 @@ class Energy {
         return this.element
     }
 
+    renderDeleteBtn() {
+        this.deleteBtn.innerText = "x"
+        return this.deleteBtn
+    }
+
     addToDom() {
         Energy.energyContainer.append(this.render())
+        Energy.energyContainer.append(this.renderDeleteBtn())
         this.addListeners()
+    }
+
+    deleteEnergy = (e) => {
+        this.element.remove()
+        this.deleteBtn.remove()
+        //this.removeFromDropdown()
+        EnergyApi.deleteEnergy(this.id)
     }
 
     addListeners(){
         this.element.addEventListener('click', this.setActiveEnergy)
+        this.deleteBtn.addEventListener('click', this.deleteEnergy)
     }
 
     setActiveEnergy = (event) => {
@@ -70,5 +86,11 @@ class Energy {
         option.innerText = this.name
         dropdown.append(option)
     }
+
+    // removeFromDropdown(){
+        
+    //     const option = dropdown[this.id]
+    //     dropdown.remove(option)
+    // }
 
 }
