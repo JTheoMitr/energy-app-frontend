@@ -38,9 +38,9 @@ class Energy {
     }
 
     deleteEnergy = (e) => {
+        this.removeFromDropdown()
         this.element.remove()
         this.deleteBtn.remove()
-        //this.removeFromDropdown()
         EnergyApi.deleteEnergy(this.id)
     }
 
@@ -87,10 +87,17 @@ class Energy {
         dropdown.append(option)
     }
 
-    // removeFromDropdown(){
-        
-    //     const option = dropdown[this.id]
-    //     dropdown.remove(option)
-    // }
+    removeFromDropdown(){
+            
+       const options = dropdown.querySelectorAll('option')
+
+       options.forEach(o => {
+           if (o.innerText == this.name) {
+               console.log(o)
+               o.remove()
+           }
+       })
+    
+    }
 
 }
